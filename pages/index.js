@@ -91,9 +91,9 @@ export default function Home({jobs}) {
           py={{ base: 20, md: 28 }}>
           <Stack p="4" boxShadow="lg" m="12" borderRadius="sm" divider={<StackDivider borderColor='gray.200' />}>
             {jobs.map((job) => (
-              <Stack spacing="24px" direction={{ base: 'column', md: 'row' }} align="stretch" w="full" minH="100px">
+              <Stack key={job.id} spacing="24px" direction={{ base: 'column', md: 'row' }} align="stretch" w="full" minH="100px">
                 <Stack minW="90px" maxW="90px">
-                  <Text fontSize='15' fontWeight="semibold">{job.company.name}</Text>
+                  <Text key={job.id} fontSize='15' fontWeight="semibold">{job.company.name}</Text>
                   <Stack minW="80px">
                     <Image w='80px' h='80px' src={job.company.logoUrl} alt='company_logo' fallbackSrc='https://via.placeholder.com/150' />
                   </Stack>
@@ -104,7 +104,7 @@ export default function Home({jobs}) {
                   </Text>
                 </Stack>
                 <Stack w="30%" alignSelf={'center'}>
-                  {job.tags.slice(0, 3).map((tag) => (<Text fontSize='15'>{tag.name}</Text>))}
+                  {job.tags.slice(0, 3).map((tag) => (<Text key={tag.name} fontSize='15'>{tag.name}</Text>))}
                 </Stack>
                 <Stack w="30%" alignSelf={'center'} direction={{ base: 'column', md: 'row' }}>
                   <Text  fontWeight="semibold">{job.locationNames}</Text>
